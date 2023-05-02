@@ -11,4 +11,5 @@ dependencies = [
     "uvicorn",
     "pydantic[email]",
     "python-dotenv",
+    "gunicorn",
 ]
