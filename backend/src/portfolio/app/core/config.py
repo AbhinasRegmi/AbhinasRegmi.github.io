@@ -31,7 +31,7 @@ class Setting(BaseSettings):
 
 
 
-@lru_cache
+@lru_cache(maxsize=128)
 def get_settings() -> Setting:
     return Setting() #type:ignore
 
