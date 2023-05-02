@@ -12,4 +12,5 @@ dependencies = [
     "pydantic[email]",
     "python-dotenv",
     "gunicorn",
+    "httpx",
 ]
