@@ -1,0 +1,8 @@
+pyproject.toml
+src/porfolio.egg-info/PKG-INFO
+src/porfolio.egg-info/SOURCES.txt
+src/porfolio.egg-info/dependency_links.txt
+src/porfolio.egg-info/requires.txt
+src/porfolio.egg-info/top_level.txt
+src/portfolio/app/__init__.py
+src/portfolio/app/app.py
