@@ -6,3 +6,12 @@ src/porfolio.egg-info/requires.txt
 src/porfolio.egg-info/top_level.txt
 src/portfolio/app/__init__.py
 src/portfolio/app/app.py
+src/portfolio/app/api/__init__.py
+src/portfolio/app/api/router.py
+src/portfolio/app/api/handlers/__init__.py
+src/portfolio/app/api/handlers/mail_handler.py
+src/portfolio/app/api/middlewares/__init__.py
+src/portfolio/app/core/__init__.py
+src/portfolio/app/core/config.py
+src/portfolio/app/services/__init__.py
+src/portfolio/app/services/email_service.py

@@ -12,12 +12,14 @@ async def send_email(background_tasks: BackgroundTasks, message: EmailInputSchem
     response = await EmailService.validate_email(message.email)
 
     if not response:
-        raise InvalidEmailError
+        return {
+            "msg": "Try again with Correct Email."
+        }
     
     background_tasks.add_task(EmailService.send_mail_from_client, message)
     background_tasks.add_task(EmailService.send_mail_to_client)
 
     return {
-        "message": "Your email was sent."
+        "msg": "OK"
     }
     
