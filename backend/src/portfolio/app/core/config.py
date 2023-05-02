@@ -15,6 +15,7 @@ class Setting(BaseSettings):
     SMTP_HOST: str = "smtp.gmail.com"
     ALLOWED_CORS_ORIGIN: List[AnyHttpUrl] = [
         AnyHttpUrl("https://abhinasregmi.com.np", scheme="https"),
+        AnyHttpUrl("http://127.0.0.1:5500", scheme="http"),
     ]
 
     # third-parties api endpoint
