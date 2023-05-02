@@ -13,4 +13,6 @@ dependencies = [
     "python-dotenv",
     "gunicorn",
     "httpx",
+    "jinja2",
+    "python-multipart",
 ]

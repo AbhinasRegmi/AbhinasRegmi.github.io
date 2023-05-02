@@ -1,7 +1,7 @@
 from fastapi import APIRouter, status, BackgroundTasks, Body
 
 from portfolio.app.services.email_service import EmailService
-from portfolio.app.services.exceptions import InvalidEmailError
+from portfolio.app.schemas.template_schema import HTMLTemplate
 from portfolio.app.schemas.email_schema import EmailInputSchema
 
 mail_router = APIRouter(prefix="/mail", tags=["mail"])
@@ -16,10 +16,18 @@ async def send_email(background_tasks: BackgroundTasks, message: EmailInputSchem
             "msg": "Try again with Correct Email."
         }
     
-    background_tasks.add_task(EmailService.send_mail_from_client, message)
-    background_tasks.add_task(EmailService.send_mail_to_client)
+    background_tasks.add_task(
+        EmailService.send_mail_from_client,
+        message
+    )
+    background_tasks.add_task(
+        EmailService.send_mail_to_client,
+        message.email,
+        HTMLTemplate.THANKYOU,
+        {"name": message.name},
+        "Get Back To You Soon."
+    )
 
     return {
         "msg": "OK"
     }
-    

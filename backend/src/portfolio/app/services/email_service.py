@@ -1,8 +1,12 @@
 import ssl
 import smtplib
+from typing import Optional
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
 
 import httpx
 from pydantic import EmailStr
+from jinja2 import Template
 
 from portfolio.app.core.config import settings
 from portfolio.app.schemas.email_schema import EmailInputSchema
@@ -53,6 +57,23 @@ class EmailService:
             server.sendmail(settings.SENDER_MAIL, settings.SENDER_MAIL, final_message)
 
     @classmethod
-    async def send_mail_to_client(cls) -> None:
-        import time
-        time.sleep(5)
+    def send_mail_to_client(cls, send_to: EmailStr, template: Template, context: dict, subject: Optional[str] = None) -> None:
+        ssl_context = ssl.create_default_context()
+    
+        rendered_mail = template.render(context)
+        body = MIMEText(rendered_mail, "html")
+        message = MIMEMultipart()
+
+        if subject:
+            message["Subject"] = subject
+        message["From"] = settings.SENDER_MAIL
+        message["To"] = send_to
+        message.attach(payload=body)
+
+        with smtplib.SMTP_SSL(settings.SMTP_HOST, settings.SMTP_PORT, context=ssl_context) as server:
+            server.login(settings.GOOGLE_SMTP_LOGIN, settings.GOOGLE_SMTP_PASS)
+
+            server.sendmail(settings.SENDER_MAIL, send_to, message.as_string())
+
+        
+        print("AT the end.")

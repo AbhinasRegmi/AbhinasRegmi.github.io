@@ -11,7 +11,11 @@ src/portfolio/app/api/router.py
 src/portfolio/app/api/handlers/__init__.py
 src/portfolio/app/api/handlers/mail_handler.py
 src/portfolio/app/api/middlewares/__init__.py
+src/portfolio/app/api/middlewares/responsetime.py
 src/portfolio/app/core/__init__.py
 src/portfolio/app/core/config.py
+src/portfolio/app/schemas/email_schema.py
+src/portfolio/app/schemas/template_schema.py
 src/portfolio/app/services/__init__.py
 src/portfolio/app/services/email_service.py
+src/portfolio/app/services/exceptions.py
