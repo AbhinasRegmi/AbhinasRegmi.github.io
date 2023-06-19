@@ -15,7 +15,8 @@ async def lifespan():
 
 app = FastAPI(
         title=settings.PROJECT_NAME,
-        redoc_url=''
+        redoc_url='',
+        docs_url='/'
     )
 
 app.add_middleware(
@@ -28,7 +29,7 @@ app.add_middleware(
 app.add_middleware(ResponseTime)
 
 
-@app.get("/", tags=['Health'])
+@app.get("/health", tags=['Health'])
 def test_alive():
     return {
         "message": "alive"
