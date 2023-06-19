@@ -23,6 +23,9 @@ class Setting(BaseSettings):
         "https://api.zerobounce.in/v2/validate", scheme="https"
     )
 
+    # file upload secret
+    FILE_UPLOAD_SECRET: str = "jaynepal"
+
     # env
     ZERO_BOUNCE_API_KEY: str
     GOOGLE_SMTP_LOGIN: str
