@@ -560,7 +560,7 @@ var contactForm = function() {
 
 				
 				// post_url = "http://localhost:8000/api/v1/mail/send"
-				post_url = "https://webserver-xowc.onrender.com/api/v1/mail/send"
+				post_url = "https://api.abhinasregmi.com.np/api/v1/mail/send"
 				
 				message_data = {
 					"name": $("#name").val(),
