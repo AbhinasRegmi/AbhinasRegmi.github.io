@@ -85,6 +85,7 @@ class EmailService:
         message["From"] = settings.SENDER_MAIL
         message["To"] = send_to
         message["Subject"] = "Your file uploads are here."
+        message["Message"] = "The server doesn't hold liable for damages. This is just a proxy for attachments."
 
         for file in attachements:
             file_data = await file.read()

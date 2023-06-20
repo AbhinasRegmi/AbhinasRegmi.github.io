@@ -1,5 +1,5 @@
-from functools import lru_cache
 from typing import List
+from functools import lru_cache
 
 from pydantic import BaseSettings, AnyHttpUrl
 
@@ -24,7 +24,7 @@ class Setting(BaseSettings):
     )
 
     # file upload secret
-    FILE_UPLOAD_SECRET: str = "jaynepal"
+    FILE_UPLOAD_SECRET: str
 
     # env
     ZERO_BOUNCE_API_KEY: str
