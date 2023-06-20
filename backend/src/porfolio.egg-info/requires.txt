@@ -6,3 +6,4 @@ gunicorn
 httpx
 jinja2
 python-multipart
+async-cache

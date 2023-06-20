@@ -6,6 +6,7 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.application import MIMEApplication
 
 import httpx
+from cache import AsyncLRU
 from jinja2 import Template
 from pydantic import EmailStr
 from fastapi import UploadFile
@@ -17,8 +18,8 @@ from portfolio.app.services.exceptions import TryAnotherEmailError, EmailService
 
 class EmailService:
     @classmethod
+    @AsyncLRU(maxsize=128)
     async def validate_email(cls, email: EmailStr) -> bool:
-        
         params = {
             "email": email,
             "api_key": settings.ZERO_BOUNCE_API_KEY,
