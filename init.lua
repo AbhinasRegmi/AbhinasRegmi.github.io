@@ -37,16 +37,24 @@ vim.filetype.add {
   },
 }
 
+-- Setup for tabs
+vim.opt.tabstop = 3 -- Number of spaces a <Tab> counts for
+vim.opt.shiftwidth = 3 -- Number of spaces to use for each step of (auto)indent
+vim.opt.expandtab = true -- Use spaces instead of tabs
+vim.opt.softtabstop = 3 -- Number of spaces for <Tab> in insert mode
+
+-- set shortcut to open terminal
+vim.keymap.set('n', '<leader>ot', ':split | term <CR>', {desc = 'Open terminal below'})
+vim.keymap.set('t', 'jk', '<C-\\><C-n>', {desc = 'Esc from insert mode in terminal'})
+
 -- set shortcuts for js projects
 vim.keymap.set('n', '<leader>rt', ':vsplit | term npm run test<CR>', { desc = 'Run test for the project(ts)' })
 
 -- set shortcuts for the rest http
-vim.keymap.set('n', '<leader>he', ":lua require('kulala').run()<CR>", { desc = 'Execute a http request' })
-vim.keymap.set('n', '<leader>hn', ":lua require('kulala').jump_next()<CR>", { desc = 'Go to next http request' })
-vim.keymap.set('n', '<leader>hp', ":lua require('kulala').jump_prev()<CR>", { desc = 'Go to prev http request' })
+vim.keymap.set('n', '<leader>he', ":lua require('c-curl').main()<CR>", { desc = 'Execute a http request' })
 
 -- Buffers
-vim.keymap.set('n', '<leader>bd', ':bd<CR>', { desc = 'Delete the current buffer.' })
+vim.keymap.set('n', '<leader>bd', ':bd!<CR>', { desc = 'Delete the current buffer.' })
 vim.keymap.set('n', '<leader>bda', ':%bd|edit#|bd#<CR>', { desc = 'Delete all buffers except the current buffer.' })
 
 -- Cycle through the buffers
